@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <title>Ficha desse porrinho</title>
+    <link rel="stylesheet" type="text/css" href="rpg.css">
+
+    <script src="https://unpkg.com/mathjs@11.8.2/lib/browser/math.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/random-js@2.1.0/dist/random-js.umd.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@dice-roller/rpg-dice-roller@5.5.0/lib/umd/bundle.min.js"></script>
+
+    <script type="text/javascript" src="players.json"></script>
+    <script type="text/javascript" src="magias.json"></script>
+    <script type="text/javascript" src="poderes.json"></script>
+    <script type="text/javascript" src="ficha.js"></script>
+    <script type="text/javascript" src="dados.js"></script>
+
+  </head>
+
+  <body onload="carregar_pagina()">
+    <img id="img_ficha_id" class="img_ficha" src="imgs/bg.jpg"></img>
+    <div id="nome_principal" style="width: 100%; text-align: center"><span>[r: Nome]</span></div>
+
+    <div>
+      <table class="table_navbar">
+        <tr>
+          <td class="page currentPage" onclick='mudar_aba(this, "geral")'><a>Geral</a></td>
+          <td class="page" onclick='mudar_aba(this, "pericias")'><a>Pericias</a></td>
+          <td class="page" onclick='mudar_aba(this, "defesa")'><a>Defesa</a></td>
+          <td class="page" onclick='mudar_aba(this, "items")'><a>Items</a></td>
+          <td class="page" onclick='mudar_aba(this, "magias_poderes")'><a>Poderes & Magias</a></td>
+          <td class="page" onclick='mudar_aba(this, "outros")'><a>Outros</a></td>
+        </tr>
+      </table>
+    </div>
+
+    <hr>
+
+    <div class="pagina_ficha" style="display: none;">
+      <div id="aba_geral" class="aba">
+        <div class="charsheet">
+          <header>
+            <section class="charname">
+              <label for="charname">Nome</label>
+              <span id="charname"></span>
+            </section>
+            <section class="misc">
+              <ul>
+                <li>
+                  <label for="classlevel">Classe</label>
+                  <span id="classe"></span>
+                </li>
+                <li>
+                  <label for="background">Origem</label>
+                  <span id="origem"></span>
+                </li>
+                <li>
+                  <label for="divindade">Divindade</label>
+                  <span id="divindade"></span>
+                </li>
+                <li>
+                  <label for="race">Raça</label>
+                  <span id="raca"></span>
+                </li>
+                <li>
+                  <label for="nivel">Nivel</label>
+                  <span id="nivel"></span>
+                </li>
+                <li>
+                  <label for="experiencepoints">Exp</label>
+                  <span id="xp"></span>
+                </li>
+              </ul>
+            </section>
+          </header>
+        </div>
+
+        <hr>
+
+        <div class="ficha_geral_container_atributos">
+          <div class="ficha_geral_atributo" onclick="teste_atributo(this)">
+            <span class="ficha_geral_titulo_atributo">FOR</span>
+            <br>
+            <span id="forca" class="ficha_geral_valor_atributo">[r: Força]</span>
+          </div>
+          <div class="ficha_geral_atributo" onclick="teste_atributo(this)">
+            <span class="ficha_geral_titulo_atributo">DES</span>
+            <br>
+            <span id="destreza" class="ficha_geral_valor_atributo">[r: Destreza]</span>
+          </div>
+          <div class="ficha_geral_atributo" onclick="teste_atributo(this)">
+            <span class="ficha_geral_titulo_atributo">CON</span>
+            <br>
+            <span id="constituicao" class="ficha_geral_valor_atributo">[r: Constituição]</span>
+          </div>
+          <div class="ficha_geral_atributo" onclick="teste_atributo(this)">
+            <span class="ficha_geral_titulo_atributo">INT</span>
+            <br>
+            <span id="inteligencia" class="ficha_geral_valor_atributo">[r: Inteligência]</span>
+          </div>
+          <div class="ficha_geral_atributo" onclick="teste_atributo(this)">
+            <span class="ficha_geral_titulo_atributo">SAB</span>
+            <br>
+            <span id="sabedoria" class="ficha_geral_valor_atributo">[r: Sabedoria]</span>
+          </div>
+          <div class="ficha_geral_atributo" onclick="teste_atributo(this)">
+            <span class="ficha_geral_titulo_atributo">CAR</span>
+            <br>
+            <span id="carisma" class="ficha_geral_valor_atributo">[r: Carisma]</span>
+          </div>
+        </div>
+
+        <hr>
+
+        <div id="barras">
+
+          <div class="progress">
+            <div id="bar_pv">PV: <span id="pv"></span>/<span id="max_pv"></span></div>
+          </div>
+
+          <br>
+
+          <div class="progress">
+            <div id="bar_pm">PM: <span id="pm"></span>/<span id="max_pm"></span></div>
+          </div>
+
+
+          <!-- <label for="pm">PM:</label> -->
+          <!-- <progress id="pm" value="50" max="100"></progress> -->
+
+          <!-- <tr><td id="pv">{PV}/{MAX_PV}; Label=PV; Color=255,120,120</td></tr> -->
+          <!-- <tr><td id="pm">{PM}/{MAX_PM}; Label=PM; Color=120,120,255</td></tr> -->
+        </div>
+
+        <hr>
+
+        <div>
+          <p id="descricao">[r: Descrição]</p>
+        </div>
+      </div>
+
+      <div style="display: none;" id="aba_pericias" class="aba">
+
+        <table class="tabela_pericias">
+          <thead>
+            <tr>
+              <th>Perícia</th>
+              <th>Total</th>
+              <th>Nivel/2</th>
+              <th>Atributo</th>
+              <th>Treino</th>
+              <th>Bonus</th>
+            </tr>
+          </thead>
+
+          <tbody id="body_tabela_pericias">
+
+          </tbody>
+        </table>
+      </div>
+
+
+
+      <div style="display: none;" id="aba_habilidades" class="aba">Habilidades</div>
+      <div style="display: none;" id="aba_defesa" class="aba">
+        <div>
+          <div style="background-image: url('imgs/7e3956e513ad958bd024b4f7e1e7e572.png');
+                      background-size: contain;
+                      background-repeat: no-repeat;
+                      width: 500px;
+                      max-width: 821.75px;
+                      height: 560px;
+                      max-height: 560px;
+                      container-type: size;
+                      margin: 0 auto 0 auto;">
+
+            <span id="defesaTotal" style="position: relative; top: 13.0%; left: 9.5%; font-size: 3.5rem; ">[r: defesaTotal]</span>
+            <span style="position: relative; top: 11.0%; left: 12.5%; font-size: 1.5rem; ">=10</span>
+
+            <span id="defesa_destreza" style="position: relative; top: 11.5%; left: 22.7%; font-size: 1rem; ">[r: Destreza]</span>
+            <span id="defesa_defesaArmadura1" style="position: relative; top: 11.5%; left: 33.7%; font-size: 1rem; ">[r: defesaArmadura]</span>
+            <span id="defesa_defesaEscudo1" style="position: relative; top: 11.5%; left: 44.3%; font-size: 1rem; ">[r: defesaEscudo]</span>
+            <span id="defesa_OutrosDefesa" style="position: relative; top: 11.5%; left: 55.3%; font-size: 1rem; ">[r: OutrosDefesa]</span>
+
+            <br>
+            <span style="position: relative; top: 11.0%; left: 35.5%; font-size: 0.8rem; ">Penalidade total de Armadura</span>
+            <span id="defesa_penalidadeTotal" style="position: relative; top: 11.7%; left: 44.7%; font-size: 1.0rem; ">[r: penalidadeTotal]</span>
+
+            <br>
+            <span id="defesa_nomeArmadura" style="position: relative; top: 22.0%; left: 10.0%; font-size: 1rem; ">[r: nomeArmadura]</span>
+            <br>
+            <span id="defesa_defesaArmadura2" style="position: relative; top: 18.0%; left: 65.5%; font-size: 1rem; ">[r: defesaArmadura]</span>
+            <span id="defesa_penalidadeArmadura" style="position: relative; top: 18.0%; left: 80.5%; font-size: 1rem; ">[r: penalidadeArmadura]</span>
+
+            <br>
+            <span id="defesa_nomeEscudo" style="position: relative; top: 22.2%; left: 10.00%; font-size: 1rem; ">[r: nomeEscudo]</span>
+            <br>
+            <span id="defesa_defesaEscudo2" style="position: relative; top: 18.2%; left: 65.85%; font-size: 1rem; ">[r: defesaEscudo]</span>
+            <span id="defesa_penalidadeEscudo" style="position: relative; top: 18.2%; left: 80.90%; font-size: 1rem; ">[r: penalidadeEscudo]</span>
+          </div>
+        </div>
+      </div>
+
+      <div style="display: none;" id="aba_items" class="aba">
+        <table class="tabela_items">
+          <thead>
+            <tr>
+              <th>Item</th>
+              <th>Descrição</th>
+              <th>Quantidade</th>
+              <th>Guardado em</th>
+            </tr>
+          </thead>
+          <tbody id="body_tabela_items">
+          </tbody>
+        </table>
+      </div>
+
+      <div style="display: none;" id="aba_magias_poderes" class="aba">
+        <div style="height: 100%;margin-top: 0;display: flex;margin-bottom: 0; justify-content: center; margin-left: 12%; gap: 10%;">
+          <div style="width: 25%;"><h3>Habilidades:</h3><div id="div_poderes"></div></div>
+          <div style="width: 25%;"><h3>Magias:</h3><div id="div_magias"></div></div>
+        </div>
+      </div>
+
+      <div style="display: none;" id="aba_outros" class="aba">
+        <ul>
+          <li><a href="T20 - Livro Básico - Jogo do Ano.pdf">Livro</a></li>
+          <li><a href="rpg.html">Página do RPG</a></li>
+        </ul>
+      </div>
+    </div>
+    <hr>
+
+
+    <div id="btn_abrir_dados" onclick="abrir_janela_dados()">
+      Abrir dados
+    </div>
+  </body>
+</html>

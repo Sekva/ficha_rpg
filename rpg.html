@@ -1,0 +1,807 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2024-06-23 dom 21:41 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>RPG brabo ainda sem nome</title>
+<meta name="author" content="Matheus Machado" />
+<meta name="generator" content="Org Mode" />
+<style type="text/css">
+body {
+font-family: Helvetica, Arial, sans-serif;
+font-size: 16px;
+line-height: 1.4;
+color: #33333f;
+}
+
+code {
+font-family: "Inconsolata", "monospace";
+font-size: 16px;
+}
+
+p>code, li>code {
+background-color: #eee;
+padding: 0.25em;
+}
+
+h1, h2, h3 {
+font-family: "Roboto Slab", Helvetica, Arial, sans-serif;
+}
+
+h2 {
+border-bottom: 1px solid #f0c;
+padding-bottom: 0.5em;
+font-size: 1.75em;
+}
+
+h3 {
+margin-top: 2em;
+font-size: 1.5em;
+}
+
+h4 {
+font-size: 1.25em;
+}
+
+h5 {
+font-size: 1em;
+}
+
+h2 code, h3 code, h4 code, h5 code, td code {
+font-family: inherit !important;
+font-size: inherit !important;
+}
+
+td code {
+font-weight: bold;
+}
+
+a:link, a:hover, a:visited {
+text-decoration: none;
+color: black;
+}
+
+a:link {
+background: #ff8;
+}
+
+a:visited {
+color: #666;
+background: #ffc;
+}
+
+a:link:hover,
+a:visited:hover {
+background: #ff0;
+}
+
+a[href^="http"] {
+background: #bff;
+}
+
+a[href^="http"]:visited {
+background: #dff;
+}
+
+a[href^="http"]:link:hover,
+a[href^="http"]:visited:hover {
+background: #0ff;
+}
+
+a[href^="http"]:after {
+content: "\21B3";
+background: white;
+padding-left: 0.2em;
+}
+
+#meta {
+margin-top: 2em;
+}
+
+#table-of-contents a:link,
+#table-of-contents a:visited {
+color: black;
+background: transparent;
+}
+
+#table-of-contents {
+line-height: 1.2;
+}
+#table-of-contents h2 {
+border-bottom: 0;
+}
+
+#table-of-contents ul {
+list-style: none;
+padding-left: 0.5em;
+font-weight: normal;
+}
+
+#table-of-contents div>ul>li {
+margin-top: 1em;
+font-weight: bold;
+}
+
+#table-of-contents .tag {
+display: none;
+}
+
+#table-of-contents .todo,
+#table-of-contents .done {
+font-size: 80%;
+}
+
+#table-of-contents ol>li {
+margin-top: 1em;
+}
+
+table {
+width: 100%;
+}
+
+table, th, td {
+border: 1px solid #666;
+}
+
+th, td {
+padding: 0.5em;
+text-align: left;
+}
+
+tbody tr:nth-child(odd) {
+background-color: #eee;
+}
+
+img {
+max-width: 90%;
+}
+
+div.notice {
+position: relative;
+margin: 0 1.2em;
+padding: 0.25em 1em;
+border-left: 4px solid;
+}
+
+table + div.notice {
+margin-top: 2em;
+}
+
+div.notice a {
+background: transparent !important;
+border-bottom: 1px dotted;
+}
+
+div.notice a[href^="http"]:after {
+background: transparent !important;
+}
+
+div.notice:before {
+position: absolute;
+top: 0;
+right: 0;
+padding: 0.25em 0.5em 0;
+font-size: 60%;
+border-bottom-left-radius: 0.5em;
+}
+
+.notice-warning {
+background: #fcc;
+color: #600;
+}
+
+.notice-example {
+background: #def;
+color: #069;
+}
+
+.notice-info {
+background: #efe;
+color: #060;
+}
+
+.notice-warning a {
+color: #600;
+}
+
+.notice-example a {
+color: #069;
+}
+
+.notice-info a {
+color: #060;
+}
+
+div.notice-warning:before {
+content: "WARNING";
+background: #c99;
+color: #fcc;
+}
+
+div.notice-example:before {
+content: "EXAMPLE";
+background: #abc;
+color: #def;
+}
+
+div.notice-info:before {
+content: "INFO";
+background: #9c9;
+color: #efe;
+}
+
+/* things inside the #+BEGIN_NOTE...#+END_NOTE block */
+div.NOTE a {
+background: transparent !important;
+border-bottom: 1px dotted;
+}
+
+div.NOTE {
+position: relative;
+margin: 0 1.2em;
+padding: 0.25em 1em;
+border-left: 4px solid;
+margin-top: 2em;
+background: #efe;
+color: #060;
+}
+
+div.NOTE:before {
+position: absolute;
+top: 0;
+right: 0;
+padding: 0.25em 0.5em 0;
+font-size: 60%;
+border-bottom-left-radius: 0.5em;
+content: "NOTE";
+background: #9c9;
+color: #efe;
+}
+
+blockquote {
+padding: 0px 10px 0px 10px;
+border: 1px solid #ddd;
+background: #eee;
+box-shadow: 5px 5px 5px #eee;
+border-radius: 2px;
+line-height: 1.2em;
+}
+
+pre {
+font-family: "Inconsolata", "monospace";
+font-size: 100%;
+border: 0;
+box-shadow: none;
+overflow: auto;
+}
+
+pre.example:before {
+content: "EXAMPLE";
+display: block;
+border-bottom: 1px dotted;
+margin-bottom: 1em;
+}
+
+pre.example {
+background: #fec;
+color: #666;
+font-size: 0.85em;
+}
+
+pre {
+background-color: #f8f8f8;
+background-size: 8px 8px;
+background-image: linear-gradient(135deg, transparent 25%, rgba(0, 0, 0, 0.02) 25%, rgba(0, 0, 0, 0.02) 50%, transparent 50%, transparent 75%, rgba(0, 0, 0, 0.02) 75%, rgba(0, 0, 0, 0.02));
+}
+
+pre.src {
+padding: 0.5em;
+}
+
+pre.src:before {
+display: block;
+position: absolute;
+background-color: #ccccd0;
+top: 0;
+right: 0;
+padding: 0.25em 0.5em;
+border-bottom-left-radius: 8px;
+border: 0;
+color: white;
+font-size: 80%;
+}
+
+pre.src-plantuml:before {
+content: "UML";
+}
+
+pre.src-javascript:before {
+content: "JS";
+}
+
+pre.src-clojure:before {
+content: "CLJ";
+}
+
+pre.src-c:before {
+content: "C";
+}
+
+pre.src-sh:before {
+content: "Shell";
+}
+
+pre.src-es:before {
+content: "ES";
+}
+
+span.org-string {
+color: #f94;
+}
+
+span.org-keyword {
+color: #c07;
+}
+
+span.org-variable-name {
+color: #f04;
+}
+
+span.org-clojure-keyword {
+color: #09f;
+}
+
+span.org-comment, span.org-comment-delimiter {
+color: #999;
+}
+
+span.org-rainbow-delimiters-depth-1, span.org-rainbow-delimiters-depth-5 {
+color: #666;
+}
+
+span.org-rainbow-delimiters-depth-2, span.org-rainbow-delimiters-depth-6 {
+color: #888;
+}
+
+span.org-rainbow-delimiters-depth-3, span.org-rainbow-delimiters-depth-7 {
+color: #aaa;
+}
+
+span.org-rainbow-delimiters-depth-4, span.org-rainbow-delimiters-depth-8 {
+color: #ccc;
+}
+
+div.figure {
+font-size: 0.85em;
+}
+
+.tag {
+font-family: "Roboto Slab", Helvetica, Arial, sans-serif;
+font-size: 11px;
+font-weight: normal;
+float: right;
+margin-top: 1em;
+background: transparent;
+}
+
+.tag span {
+background: #ccc;
+padding: 0 0.5em;
+border-radius: 0.2em;
+color: white;
+}
+
+.todo, .done {
+font-family: "Roboto Slab", Helvetica, Arial, sans-serif;
+font-weight: normal;
+padding: 0 0.25em;
+border-radius: 0.2em;
+}
+
+.todo {
+background: #f04;
+color: white;
+}
+
+.done {
+background: #5f7;
+color: white;
+}
+
+@media screen {
+h1.title {
+text-align: left;
+margin: 0.5em 0 1em 0;
+}
+
+h2 {
+margin-top: 3em;
+}
+
+#table-of-contents {
+position: fixed;
+top: 0;
+left: 0;
+padding: 2em 0 2em 2em;
+width: 290px;
+height: 100vh;
+font-size: 11px;
+background: #eee;
+overlow-x: hidden;
+overlow-y: auto;
+}
+
+#table-of-contents h2 {
+margin-top: 0;
+}
+
+#table-of-contents code {
+font-size: 12px;
+}
+
+div#content {
+margin-left: 320px;
+max-width: 1100px;
+}
+div#postamble {
+margin-left: 320px;
+max-width: 1100px;
+}
+}
+
+@media screen and (max-width: 1024px) {
+html, body {
+font-size: 14px;
+}
+
+#table-of-contents {
+display: none;
+}
+
+h1.title {
+margin-left: 0%;
+}
+
+div#content {
+margin-left: 5%;
+max-width: 90%;
+}
+div#postamble {
+margin-left: 5%;
+max-width: 90%;
+}
+}
+
+@media print {
+
+body {
+color: black;
+}
+
+@page {
+margin: 25mm;
+}
+
+h2, h3 {
+page-break-before: always;
+margin-top: 0;
+}
+
+table {
+page-break-inside: avoid;
+}
+
+a:visited {
+color: black;
+background: #ff8;
+}
+
+a[href^="http"]:visited {
+background: #bff;
+}
+
+div.notice:before {
+display: none;
+}
+}
+</style>
+<link rel="stylesheet" type="text/css" href="rpg.css" />
+</head>
+<body>
+<div id="content" class="content">
+<h1 class="title">RPG brabo ainda sem nome
+<br />
+<span class="subtitle">Tá rolando <br> A gente só precisa do nome</span>
+</h1>
+<div id="table-of-contents" role="doc-toc">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents" role="doc-toc">
+<ul>
+<li><a href="#orge391de3">1. Sistema</a>
+<ul>
+<li><a href="#org07c89d6">1.1. Restrições</a></li>
+<li><a href="#org0c284e0">1.2. Bestiário</a></li>
+<li><a href="#org39be528">1.3. Ficha</a></li>
+</ul>
+</li>
+<li><a href="#org47e5f0d">2. Ferramentas</a>
+<ul>
+<li><a href="#orgbb96187">2.1. Mapa</a></li>
+<li><a href="#org3f87e72">2.2. Ficha online</a></li>
+<li><a href="#org1caacae">2.3. Tokens</a></li>
+<li><a href="#org2e6cbf1">2.4. Comunicação</a></li>
+</ul>
+</li>
+<li><a href="#orgc318d5b">3. Historia</a>
+<ul>
+<li><a href="#orgdc1c9a0">3.1. Inicio</a></li>
+</ul>
+</li>
+<li><a href="#org8799385">4. Referências</a></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orge391de3" class="outline-2">
+<h2 id="orge391de3"><span class="section-number-2">1.</span> Sistema</h2>
+<div class="outline-text-2" id="text-1">
+<p>
+O sistema que a gente vai usar vai ser o <a href="https://jamboeditora.com.br/categoria/rpg/tormenta20-rpg/">Tormenta20</a>. Não vai ser um sistema 100% fiel e tals, a gente vai se organizando de acordo com as partidas. Então podemos usar o <a href="T20 - Livro Básico - Jogo do Ano.pdf">Livro Base</a> sem problemas, desde que todo mundo considere os ajustes que foram feitos.
+</p>
+
+<p>
+Um ajuste no sistema que precisa ser mostrado a priori, pra não se ter problema na criação do personagem é que algumas raças e classes foram cortadas do jogo.
+</p>
+</div>
+
+<div id="outline-container-org07c89d6" class="outline-3">
+<h3 id="org07c89d6"><span class="section-number-3">1.1.</span> Restrições</h3>
+<div class="outline-text-3" id="text-1-1">
+<p>
+Nem toda raça e nem toda classe a gente vai considerar, então&#x2026;
+</p>
+
+<details>
+<summary>Clica</summary>
+<h3>Raças</h3>
+<ul class="org-ul">
+<li><a href="T20 - Livro Básico - Jogo do Ano.pdf#page=25">Humano</a></li>
+<li><a href="T20 - Livro Básico - Jogo do Ano.pdf#page=26">Anão</a></li>
+<li><a href="T20 - Livro Básico - Jogo do Ano.pdf#page=28">Elfo</a></li>
+<li><a href="T20 - Livro Básico - Jogo do Ano.pdf#page=29">Goblin</a></li>
+<li><a href="T20 - Livro Básico - Jogo do Ano.pdf#page=31">Minotauro</a></li>
+<li><a href="T20 - Livro Básico - Jogo do Ano.pdf#page=32">Qareen</a></li>
+<li><a href="T20 - Livro Básico - Jogo do Ano.pdf#page=33">Golem</a></li>
+<li><a href="T20 - Livro Básico - Jogo do Ano.pdf#page=33">Hynne</a></li>
+<li><a href="T20 - Livro Básico - Jogo do Ano.pdf#page=34">Medusa</a></li>
+<li><a href="T20 - Livro Básico - Jogo do Ano.pdf#page=35">Osteon</a></li>
+<li><a href="T20 - Livro Básico - Jogo do Ano.pdf#page=36">Sílfide</a></li>
+<li><a href="T20 - Livro Básico - Jogo do Ano.pdf#page=36">Suraggel</a></li>
+<li><a href="T20 - Livro Básico - Jogo do Ano.pdf#page=37">Trog</a></li>
+</ul>
+<h3>Classes</h3>
+<ul class="org-ul">
+<li><a href="T20 - Livro Básico - Jogo do Ano.pdf#page=42">Arcanista</a></li>
+<li><a href="T20 - Livro Básico - Jogo do Ano.pdf#page=46">Bárbaro</a></li>
+<li><a href="T20 - Livro Básico - Jogo do Ano.pdf#page=49">Bardo</a></li>
+<li><a href="T20 - Livro Básico - Jogo do Ano.pdf#page=55">Caçador</a></li>
+<li><a href="T20 - Livro Básico - Jogo do Ano.pdf#page=58">Cavaleiro</a></li>
+<li><a href="T20 - Livro Básico - Jogo do Ano.pdf#page=62">Clérigo</a></li>
+<li><a href="T20 - Livro Básico - Jogo do Ano.pdf#page=66">Druida</a></li>
+<li><a href="T20 - Livro Básico - Jogo do Ano.pdf#page=73">Inventor</a></li>
+<li><a href="T20 - Livro Básico - Jogo do Ano.pdf#page=78">Ladino</a></li>
+<li><a href="T20 - Livro Básico - Jogo do Ano.pdf#page=81">Lutador</a></li>
+<li><a href="T20 - Livro Básico - Jogo do Ano.pdf#page=87">Paladino</a></li>
+</ul>
+
+
+<h3>Origens</h3>
+<p>
+Todas as origens presentes no <a href="T20 - Livro Básico - Jogo do Ano.pdf#page=91">Livro Base</a> podem ser usadas, quando couberem, é claro.
+</p>
+
+
+</details>
+</div>
+</div>
+
+<div id="outline-container-org0c284e0" class="outline-3">
+<h3 id="org0c284e0"><span class="section-number-3">1.2.</span> Bestiário</h3>
+<div class="outline-text-3" id="text-1-2">
+<p>
+Vai ser usado um bestiário prontinho feito por fans de tormenta, que tem imagens e todas as informações bem resumidas, então acaba sendo legal de usar.
+</p>
+
+<p>
+==============&gt; <a href="Béstiario T20 (FanMade).pdf">Bestiário</a>
+</p>
+</div>
+</div>
+
+<div id="outline-container-org39be528" class="outline-3">
+<h3 id="org39be528"><span class="section-number-3">1.3.</span> Ficha</h3>
+<div class="outline-text-3" id="text-1-3">
+<p>
+A ficha, durante o jogo, vai ser gerida dentro da ferramenta que a gente vai usar, mas, inicialmente,  vamos fazer a ficha por fora, e depois mandar pra ferramenta, numa sessão de preparação a parte. O GM ainda não deu conta de aprender a usar a ferramenta 100%, então tenham paciência, to sem tempo irmões.
+</p>
+
+<p>
+A ficha:
+</p>
+
+<p>
+==============&gt; <a href="T20 - Ficha - Jogo do Ano.pdf">Ficha de tormenta</a>
+</p>
+
+<p>
+==============&gt; <a href="T20 - Ficha Editável - Jogo do Ano.pdf">Ficha de tormenta (editável)</a>
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org47e5f0d" class="outline-2">
+<h2 id="org47e5f0d"><span class="section-number-2">2.</span> Ferramentas</h2>
+<div class="outline-text-2" id="text-2">
+<p>
+São poucas, a gente vai discutindo e vendo o que vai precisando&#x2026;
+</p>
+</div>
+<div id="outline-container-orgbb96187" class="outline-3">
+<h3 id="orgbb96187"><span class="section-number-3">2.1.</span> Mapa</h3>
+<div class="outline-text-3" id="text-2-1">
+<p>
+A gente vai usar o <a href="https://www.rptools.net/toolbox/maptool/">MapTool</a>. Precisa ser baixado (todo mundo precisa ter), e, mais pra frente a gente vê um dia pra brincar com ele.
+</p>
+</div>
+</div>
+<div id="outline-container-org3f87e72" class="outline-3">
+<h3 id="org3f87e72"><span class="section-number-3">2.2.</span> Ficha online</h3>
+<div class="outline-text-3" id="text-2-2">
+<p>
+Fiz uma fichazinha online "integrada" ao MapTool, usem e qualquer melhoria é só ir dizendo.
+</p>
+
+<p>
+==============&gt; <a href="ficha.html">Ficha</a>
+</p>
+</div>
+</div>
+<div id="outline-container-org1caacae" class="outline-3">
+<h3 id="org1caacae"><span class="section-number-3">2.3.</span> Tokens</h3>
+<div class="outline-text-3" id="text-2-3">
+<p>
+Podem fazer os tokens pros seus personagens da forma que vocês quiserem. Incluse pegar os prontos que tá no <a href="https://drive.google.com/drive/u/0/folders/1wZ7dGUeqo4DvPIx0kRTtoohh4Kuihe11">drive com tudo de tormenta</a>.
+</p>
+
+<p>
+Junto com o MapTool, o pessoal também criou o <a href="https://www.rptools.net/toolbox/token-tool/">TokenTool</a>. Se quiserem, podem montar já usando ele e me mandar, ou mandar só as imagens que a gente monta junto rapidinho&#x2026; Mas tem ferramentas online também, tipo o <a href="https://rolladvantage.com/tokenstamp/">TokenStamp</a>.
+</p>
+
+<p>
+De preferencia, cada jogador tem 3 imagens:
+</p>
+<ul class="org-ul">
+<li>Uma imagem do token, de fato, que é a aparece bonitinha no mapa (quadrada).</li>
+<li>Uma imagem de retrato, pra quando se passa o mouse por cima do token, aparece um retratinho legal no canto da tela (retangular vertical, de preferencia).</li>
+<li>Uma imagem completa, do jeito que quiser.</li>
+</ul>
+
+<p>
+Pode ser usado imagens de onde quiserem&#x2026;
+</p>
+</div>
+</div>
+
+<div id="outline-container-org2e6cbf1" class="outline-3">
+<h3 id="org2e6cbf1"><span class="section-number-3">2.4.</span> Comunicação<sup><a id="fnr.1" class="footref" href="#fn.1" role="doc-backlink">1</a></sup></h3>
+<div class="outline-text-3" id="text-2-4">
+<ul class="org-ul">
+<li>Disc</li>
+<li>Zap</li>
+</ul>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgc318d5b" class="outline-2">
+<h2 id="orgc318d5b"><span class="section-number-2">3.</span> Historia</h2>
+<div class="outline-text-2" id="text-3">
+</div>
+
+<div id="outline-container-orgdc1c9a0" class="outline-3">
+<h3 id="orgdc1c9a0"><span class="section-number-3">3.1.</span> Inicio</h3>
+<div class="outline-text-3" id="text-3-1">
+<p>
+A caravana seguia seu caminho em direção norte. Já era tarde da noite, talvez estivesse perto de amanhecer, mas ainda assim as estrelas pareciam mais brilhantes no céu. A passagem da caravana pelo monastério do [Andarilho do vento] tinha ocorrido como de costume, descarregaram os grãos colhidos recentemente no sul, e em troca carregaram seus barris e sacos com ervas, que seriam vendidas no destino final da caravana, [Perplexidrum], a maior cidade comercial do domínio dos anões.
+</p>
+
+<div class="dm">
+Porque você está na caravana? Está só acompanhando? Trabalha com estes mercadores? Está prestando algum serviço?
+</div>
+
+<p>
+O grande conhecedor e líder da caravana, [Cilob Rimmeets], já reconhecendo as terras da próxima parada, sugere à caravana uma pequena pausa para descanso, para que chegando à [Sombercrystal] pudessem trabalhar com mais vigor. [Sombercrystal] era uma vila de tamanho modesto, mas muito bem conhecida como parada de todos os tipos de viajantes, visto que se localiza-se entre as grandes cidades da região e os campos mais produtivos de alimentos à sul e leste.
+</p>
+
+<p>
+Alguns momentos depois que os integrantes das caravana finalizavam a preparação de pequenas cabanas improvisadas e acendiam fogueiras, um grito de alerta podia ser ouvido ao longe. [Cilob Rimmeets], tomando a frente, como sempre fazia, chamou aos berros os responsáveis pela proteção da caravana. Aos poucos, o som dos gritos ao longe iam aumentando e com ele um galopar incansável do que parecia ser uma mula de carga.
+</p>
+
+<p>
+Quanto mais o ser montado na mula ia se aproximando, mais tranquilo [Cilob Rimmeets] ia ficando. Era um velho conhecido seu, [Kogan Archobey], um carpinteiro de [Sombercrystal] que sempre carregava uma expressão preocupada, mas dessa vez trazia consigo o desespero encarnado.
+</p>
+
+<p>
+𑁋 "Ajuda! Ajuda! Estamos sob ataque!"
+</p>
+
+<p>
+[Kogan Archobey] desmontou da mula, ofegante e com os olhos arregalados. Seu rosto estava coberto de suor e poeira, e suas roupas estavam rasgadas em vários lugares. Ele se aproximou de [Cilob Rimmeets], agarrando-o pelos ombros.
+</p>
+
+<p>
+𑁋 "[Cilob]! Uma hidra atacou [Sombercrystal]! Ela surgiu como que do nada e começou a atacar tudo o que via pela frente. As casas estão em chamas e muitos estão feridos ou mortos!"
+</p>
+
+<p>
+A caravana entrou em alvoroço. Muitos dos viajantes tinham amigos e familiares em [Sombercrystal] e a notícia do ataque os deixou em pânico. [Cilob Rimmeets], sempre o pilar de calma e razão, levantou a mão para pedir silêncio.
+</p>
+
+<p>
+𑁋 "Vamos nos organizar. [Kogan Archobey], ela ainda está na vila?"
+</p>
+
+<p>
+[Kogan Archobey] balançou a cabeça, tentando se lembrar. "Sim, ela ainda está lá. Vim aqui para pedir ajuda. Estávamos à espera de sua caravana e contamos com sua ajuda."
+</p>
+
+<p>
+[Cilob Rimmeets] olhou para os membros da caravana. "Precisamos ajudar [Sombercrystal]." Rapidamente, toda da caravana se armou e montaram tudo que podia ser usado de transporte. [Cilob Rimmeets] liderou o grupo, com [Kogan Archobey] ao seu lado, guiando-os de volta à vila.
+</p>
+
+<div class="dm">
+Você foi junto. Todos foram, você sabia que não deveria ficar só, não era seguro. Se passaram 234 anos do inicio da era do mito, e a cada ano que se passava o mundo parecia mais inseguro. Ou seria apenas a percepção do mundo que havia melhorado nos últimos anos graças aos avanços do estudiosos que você conheceu no [Andarilho do vento].
+</div>
+
+<p>
+Ao chegarem, a cena era de devastação. Casas em chamas, pessoas gritando e, não que seja pouco, apenas isso. Apenas a destruição e o sofrimento dos que ali habitavam. O suco vermelho escorria de coisas pastosas do que anteriormente eram corpos de anões e contrastava com as cinzas das casas de madeira. O horizonte estava tingido de um carmesim profundo, onde as silhuetas desfiguradas se contorciam em agonia. O solo, antes firme, agora estava saturado e pegajoso, absorvendo o liquido vital que se derramava das feridas abertas. Membros decepados jaziam espalhados, e poças de sangue refletiam o brilho cruel das chamas. O cheiro metálico de sangue se misturava ao odor acre da medeira queimada e ao grito agudo de um animal ferido, criando uma atmosfera sufocante de dor, desespero e o murmurio do fogo que consome tudo. Não havia mais nada a ser feito, a não ser lamentar.
+</p>
+
+<p>
+Após uma breve discussão com alguns locais e todos da caravana, decidiram que a caravana ficaria por um dia e partir na tarde do próximo. Após um amanhecer de gritos, choros e soluços, conversas sobre que caminho a hidra tomou após o ataque começaram a borbulhar na boca dos que sobreviveram, juntamente à indignação. Algo precisava ser feito. Todos sabem que hidras vivem em seus lares e não saem por ai procurando coisas para destruir. Algo precisava ser feito.
+</p>
+
+<div class="dm">
+Você e mais alguns outros membros da caravana sentaram perto de alguns escombros após ajudar (nem todos podem ter ajudado) numa limpeza parcial, principalmente de corpos, ou do que pareciam ser..., para reduzir a angustia do ar de destruição de restou... A partir daqui é, a decisão é sua, e você sabe disso.
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org8799385" class="outline-2">
+<h2 id="org8799385"><span class="section-number-2">4.</span> Referências</h2>
+<div class="outline-text-2" id="text-4">
+<ul class="org-ul">
+<li><a href="https://drive.google.com/drive/u/0/folders/1wZ7dGUeqo4DvPIx0kRTtoohh4Kuihe11">Drive com tudo de tormenta</a></li>
+<li><a href="T20 - FAQ.pdf">FAQ que tem muita resposta já</a></li>
+<li><a href="https://drive.google.com/drive/folders/1EgIat5Z-Iig8Opy_BKoExIw5iPfd7mJI">Drive com Ameaças</a></li>
+</ul>
+</div>
+</div>
+<div id="footnotes">
+<h2 class="footnotes">Footnotes: </h2>
+<div id="text-footnotes">
+
+<div class="footdef"><sup><a id="fn.1" class="footnum" href="#fnr.1" role="doc-backlink">1</a></sup> <div class="footpara" role="doc-footnote"><p class="footpara">
+Não tinha como ser diferente, né?
+</p></div></div>
+
+
+</div>
+</div></div>
+</body>
+</html>
